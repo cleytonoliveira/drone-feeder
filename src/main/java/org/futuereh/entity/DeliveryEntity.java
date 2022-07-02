@@ -1,18 +1,11 @@
 package org.futuereh.entity;
 
-<<<<<<< HEAD
-import javax.persistence.*;
-import java.time.LocalDateTime;
-
-@Entity
-=======
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
->>>>>>> 54a2501cfa313df7ca48174dd77b4ce33e512c1a
 public class DeliveryEntity {
 
   /**

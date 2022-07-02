@@ -1,11 +1,9 @@
 package org.futuereh.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.*;
 
 @Entity
-public class DroneEntity extends PanacheEntity {
+public class DroneEntity {
 
   /**
    * Atributos.

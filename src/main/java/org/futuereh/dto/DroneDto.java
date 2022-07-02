@@ -1,39 +1,21 @@
-package org.futuereh.entity;
+package org.futuereh.dto;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import org.futuereh.entity.DeliveryEntity;
 
 import javax.persistence.*;
 
-@Entity
-public class DroneEntity {
+public class DroneDto {
 
   /**
    * Atributos.
    */
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long droneId;
-
-  @Column
   private String alias;
-
-  @Column
   private String brandName;
-
-  @Column
   private String model;
-
-  @Column
   private Float latitude;
-
-  @Column
   private Float longitude;
-
-  @Column
   private Boolean active;
-
-  @OneToOne (fetch = FetchType.LAZY)
-  @JoinColumn(name = "deliveryId")
   private DeliveryEntity delivery;
 
   public Long getDroneId() {

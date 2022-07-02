@@ -1,14 +1,10 @@
 package org.futuereh.entity;
 
-        import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
-        import javax.persistence.Column;
-        import javax.persistence.GeneratedValue;
-        import javax.persistence.GenerationType;
-        import javax.persistence.Id;
-        import java.time.LocalDateTime;
-
-public class DeliveryEntity extends PanacheEntity {
+@Entity
+public class DeliveryEntity {
 
   /**
    * Atributos.

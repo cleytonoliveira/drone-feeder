@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.3'
 services:
   db:
@@ -12,3 +13,30 @@ services:
       - '3306:3306'
     expose:
       - '3306'
+=======
+version: "3.8"
+
+services:
+  application:
+    build:
+      context: .
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    restart: always
+    ports:
+      - 8008:8080
+    links:
+      - mysql:database
+  mysql:
+     image: mysql:8.0
+     restart: always
+     environment:
+      MYSQL_DATABASE: 'dronedb'
+      MYSQL_ROOT_PASSWORD: 'root'
+     ports:
+       - 3306:3306
+     volumes:
+      - drone-db:/var/lib/mysql
+      
+volumes:
+  drone-db:
+>>>>>>> 54a2501cfa313df7ca48174dd77b4ce33e512c1a

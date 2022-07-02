@@ -2,30 +2,29 @@ package org.futuereh.dto;
 
 import org.futuereh.entity.DeliveryEntity;
 
-import javax.persistence.*;
-
 public class DroneDto {
-
+  
   /**
-   * Atributos.
+   * Attributes
    */
-  private Long droneId;
   private String alias;
+
   private String brandName;
+
   private String model;
+
   private Float latitude;
+
   private Float longitude;
+
   private Boolean active;
+
   private DeliveryEntity delivery;
 
-  public Long getDroneId() {
-    return droneId;
-  }
-
-  public void setDroneId(Long droneId) {
-    this.droneId = droneId;
-  }
-
+  /**
+   * Methods
+   * @return
+   */
   public String getAlias() {
     return alias;
   }

@@ -1,9 +1,12 @@
 package org.futuereh.dto;
 
-import org.futuereh.entity.DroneEntity;
+import org.futuereh.entity.DeliveryEntity;
 
 public class DroneDto {
   
+  /**
+   * Attributes
+   */
   private String alias;
 
   private String brandName;
@@ -18,6 +21,10 @@ public class DroneDto {
 
   private DeliveryEntity delivery;
 
+  /**
+   * Methods
+   * @return
+   */
   public String getAlias() {
     return alias;
   }

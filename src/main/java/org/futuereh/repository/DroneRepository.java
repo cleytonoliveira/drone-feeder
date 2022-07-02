@@ -1,5 +1,6 @@
 package org.futuereh.repository;
 
+
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import org.futuereh.entity.DroneEntity;
 

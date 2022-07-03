@@ -22,16 +22,16 @@ public class DeliveryService {
   /**
    * Methods.
    */
-  public List<DeliveryEntity> listar() {
+  public List<DeliveryEntity> listAll() {
     return repository.listAll();
   }
 
-  public DeliveryEntity buscarPorId(Long id) {
+  public DeliveryEntity findById(Long id) {
     return repository.findById(id);
   }
 
   @Transactional
-  public DeliveryEntity salvar(DeliveryDto deliveryDto) {
+  public DeliveryEntity save(DeliveryDto deliveryDto) {
     DeliveryEntity delivery = new DeliveryEntity();
     delivery.setWithdrawalDate(deliveryDto.getWithdrawalDate());
     delivery.setDeliveryDate(deliveryDto.getDeliveryDate());
@@ -41,7 +41,7 @@ public class DeliveryService {
   }
 
   @Transactional
-  public DeliveryEntity atualizar(DeliveryDto deliveryDto, Long id) {
+  public DeliveryEntity update(DeliveryDto deliveryDto, Long id) {
     DeliveryEntity delivery = repository.findById(id);
     delivery.setWithdrawalDate(deliveryDto.getWithdrawalDate());
     delivery.setDeliveryDate(deliveryDto.getDeliveryDate());
@@ -51,7 +51,7 @@ public class DeliveryService {
   }
 
   @Transactional
-  public void deletar(Long id) {
+  public void delete(Long id) {
     repository.deleteById(id);
   }
 }

@@ -1,7 +1,6 @@
 package org.futuereh.controller;
 
 import org.futuereh.dto.DroneDto;
-import org.futuereh.entity.DroneEntity;
 import org.futuereh.service.DroneService;
 
 import javax.inject.Inject;
@@ -34,31 +33,31 @@ import javax.ws.rs.core.Response;
      * Métodos.
      */
     @GET
-    public Response listar() {
-      return Response.ok(service.listar()).build();
+    public Response listAll() {
+      return Response.ok(service.listAll()).build();
     }
 
     @GET
     @Path("/{id}")
-    public Response buscarPorId(@PathParam(value = "id") Long id) {
-      return Response.ok(service.buscarPorId(id)).build();
+    public Response findById(@PathParam(value = "id") Long id) {
+      return Response.ok(service.findById(id)).build();
     }
 
     @POST
-    public Response salvar(@Valid DroneDto droneDto) {
-      return Response.status(Response.Status.CREATED).entity(service.salvar(droneDto)).build();
+    public Response save(@Valid DroneDto droneDto) {
+      return Response.status(Response.Status.CREATED).entity(service.save(droneDto)).build();
     }
 
     @PATCH
     @Path("/{id}")
-    public Response atualizar(@PathParam("id") Long id, @Valid DroneDto droneDto) {
-      return Response.ok(service.atualizar(droneDto, id)).build();
+    public Response update(@PathParam("id") Long id, @Valid DroneDto droneDto) {
+      return Response.ok(service.update(droneDto, id)).build();
     }
 
     @DELETE
     @Path("/{id}")
-    public void deletar(@PathParam("id") Long id) {
-      service.deletar(id);
+    public void delete(@PathParam("id") Long id) {
+      service.delete(id);
     }
   }
 

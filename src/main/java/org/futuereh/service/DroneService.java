@@ -22,16 +22,16 @@ public class DroneService {
   /**
    * Métodos.
    */
-  public List<DroneEntity> listar() {
+  public List<DroneEntity> listAll() {
     return repository.listAll();
   }
 
-  public DroneEntity buscarPorId(Long id) {
+  public DroneEntity findById(Long id) {
     return repository.findById(id);
   }
 
   @Transactional
-  public DroneEntity salvar(DroneDto droneDto) {
+  public DroneEntity save(DroneDto droneDto) {
     DroneEntity drone = new DroneEntity();
     drone.setAlias(droneDto.getAlias());
     drone.setBrandName(droneDto.getAlias());
@@ -45,7 +45,7 @@ public class DroneService {
   }
 
   @Transactional
-  public DroneEntity atualizar(DroneDto droneDto, Long id) {
+  public DroneEntity update(DroneDto droneDto, Long id) {
     DroneEntity drone = repository.findById(id);
     drone.setAlias(droneDto.getAlias());
     drone.setBrandName(droneDto.getAlias());
@@ -59,7 +59,7 @@ public class DroneService {
   }
 
   @Transactional
-  public void deletar(Long id) {
+  public void delete(Long id) {
     repository.deleteById(id);
   }
 }

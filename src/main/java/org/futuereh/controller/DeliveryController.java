@@ -42,8 +42,8 @@ public class DeliveryController {
 
   @GET
   @Path("/{id}")
-  public DeliveryEntity buscarPorId(@PathParam(value = "id") Long id) {
-    return service.buscarPorId(id);
+  public Response buscarPorId(@PathParam(value = "id") Long id) {
+    return Response.ok(service.buscarPorId(id)).build();
   }
 
   @POST

@@ -31,29 +31,29 @@ public class DroneService {
   }
 
   @Transactional
-  public DroneEntity salvar(DroneDto restDto) {
+  public DroneEntity salvar(DroneDto droneDto) {
     DroneEntity drone = new DroneEntity();
-    drone.setAlias(restDto.getAlias());
-    drone.setBrandName(restDto.getAlias());
-    drone.setDelivery(restDto.getDelivery());
-    drone.setLatitude(restDto.getLatitude());
-    drone.setLongitude(restDto.getLongitude());
-    drone.setModel(restDto.getModel());
-    drone.setActive(restDto.getActive());
+    drone.setAlias(droneDto.getAlias());
+    drone.setBrandName(droneDto.getAlias());
+    drone.setDelivery(droneDto.getDelivery());
+    drone.setLatitude(droneDto.getLatitude());
+    drone.setLongitude(droneDto.getLongitude());
+    drone.setModel(droneDto.getModel());
+    drone.setActive(droneDto.getActive());
     repository.persist(drone);
     return drone;
   }
 
   @Transactional
-  public DroneEntity atualizar(DroneDto restDto, Long id) {
+  public DroneEntity atualizar(DroneDto droneDto, Long id) {
     DroneEntity drone = repository.findById(id);
-    drone.setAlias(restDto.getAlias());
-    drone.setBrandName(restDto.getAlias());
-    drone.setDelivery(restDto.getDelivery());
-    drone.setLatitude(restDto.getLatitude());
-    drone.setLongitude(restDto.getLongitude());
-    drone.setModel(restDto.getModel());
-    drone.setActive(restDto.getActive());
+    drone.setAlias(droneDto.getAlias());
+    drone.setBrandName(droneDto.getAlias());
+    drone.setDelivery(droneDto.getDelivery());
+    drone.setLatitude(droneDto.getLatitude());
+    drone.setLongitude(droneDto.getLongitude());
+    drone.setModel(droneDto.getModel());
+    drone.setActive(droneDto.getActive());
     repository.persist(drone);
     return drone;
   }

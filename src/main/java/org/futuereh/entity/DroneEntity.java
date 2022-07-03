@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class DroneEntity {
 
   /**
-   * Atributos.
+   * Attributes
    */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +34,9 @@ public class DroneEntity {
   @JoinColumn(name = "deliveryId")
   private DeliveryEntity delivery;
 
+  /**
+   * Methods
+   */
   public Long getDroneId() {
     return droneId;
   }

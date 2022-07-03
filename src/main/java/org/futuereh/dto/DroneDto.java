@@ -80,5 +80,4 @@ public class DroneDto {
   public void setDelivery(DeliveryEntity delivery) {
     this.delivery = delivery;
   }
-
 }

@@ -34,7 +34,7 @@ public class DroneService {
   public DroneEntity save(DroneDto droneDto) {
     DroneEntity drone = new DroneEntity();
     drone.setAlias(droneDto.getAlias());
-    drone.setBrandName(droneDto.getAlias());
+    drone.setBrandName(droneDto.getBrandName());
     drone.setDelivery(droneDto.getDelivery());
     drone.setLatitude(droneDto.getLatitude());
     drone.setLongitude(droneDto.getLongitude());
@@ -48,7 +48,7 @@ public class DroneService {
   public DroneEntity update(DroneDto droneDto, Long id) {
     DroneEntity drone = repository.findById(id);
     drone.setAlias(droneDto.getAlias());
-    drone.setBrandName(droneDto.getAlias());
+    drone.setBrandName(droneDto.getBrandName());
     drone.setDelivery(droneDto.getDelivery());
     drone.setLatitude(droneDto.getLatitude());
     drone.setLongitude(droneDto.getLongitude());

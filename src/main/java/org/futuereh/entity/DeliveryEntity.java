@@ -1,15 +1,13 @@
 package org.futuereh.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class DeliveryEntity {
 
   /**
-   * Atributos.
+   * Attributes
    */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +22,9 @@ public class DeliveryEntity {
   @Column
   private Boolean status;
 
+  /**
+   * Methods
+   */
   public Long getDeliveryId() {
     return deliveryId;
   }

@@ -6,10 +6,16 @@ services:
       context: .
       dockerfile: ./src/main/docker/Dockerfile.jvm
     restart: always
+    environment:
+      - HOST=mysql
+      - DATABASE=dronedb
+      - QUARKUS_DATASOURCE_USERNAME=root
+      - QUARKUS_DATASOURCE_PASSWORD=root
     ports:
       - 8080:8080
     links:
       - mysql:database
+
   mysql:
      image: mysql:8.0
      restart: always

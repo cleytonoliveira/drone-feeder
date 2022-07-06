@@ -64,7 +64,7 @@ public class DeliveryTest {
     delivery.setStatus(true);
 
     given().body(delivery).contentType(ContentType.JSON).post("/delivery").then().statusCode(201);
-    given().body(delivery).contentType(ContentType.JSON).patch("/delivery/2").then()
+    given().body(delivery).contentType(ContentType.JSON).put("/delivery/2").then()
             .statusCode(200);
   }
 

@@ -82,7 +82,7 @@ public class DroneTest {
     droneDto.setActive(false);
 
     given().body(droneDto).contentType(ContentType.JSON).post("/drone").then().statusCode(201);
-    given().body(droneDto).contentType(ContentType.JSON).patch("/drone/2").then()
+    given().body(droneDto).contentType(ContentType.JSON).put("/drone/2").then()
             .statusCode(200);
   }
 

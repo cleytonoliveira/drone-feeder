@@ -2,7 +2,6 @@ package org.futuereh.service;
 
 import org.futuereh.dto.DeliveryDto;
 import org.futuereh.entity.DeliveryEntity;
-import org.futuereh.entity.DroneEntity;
 import org.futuereh.repository.DeliveryRepository;
 
 import java.util.List;

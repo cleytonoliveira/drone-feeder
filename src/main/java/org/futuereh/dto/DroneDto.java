@@ -5,7 +5,7 @@ import org.futuereh.entity.DeliveryEntity;
 public class DroneDto {
   
   /**
-   * Attributes
+   * Attributes.
    */
   private String alias;
 
@@ -22,7 +22,7 @@ public class DroneDto {
   private DeliveryEntity delivery;
 
   /**
-   * Methods
+   * Methods.
    * @return
    */
   public String getAlias() {

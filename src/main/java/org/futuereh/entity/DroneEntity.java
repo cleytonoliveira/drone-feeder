@@ -1,12 +1,19 @@
 package org.futuereh.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class DroneEntity {
 
   /**
-   * Attributes
+   * Attributes.
    */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +37,12 @@ public class DroneEntity {
   @Column
   private Boolean active;
 
-  @OneToOne (fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "deliveryId")
   private DeliveryEntity delivery;
 
   /**
-   * Methods
+   * Methods.
    */
   public Long getDroneId() {
     return droneId;

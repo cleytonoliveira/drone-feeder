@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class DeliveryDto {
   
   /**
-   * Attributes
+   * Attributes.
    */
   private LocalDateTime withdrawalDate;
 
@@ -14,7 +14,7 @@ public class DeliveryDto {
   private Boolean status;
 
   /**
-   * Methods
+   * Methods.
    * @return
    */
   public LocalDateTime getWithdrawalDate() {

@@ -42,6 +42,12 @@ public class DroneController {
     return Response.ok(service.findById(id)).build();
   }
 
+  @GET
+  @Path("/{id}/map")
+  public Response droneLocation(@PathParam(value = "id") Long id) {
+    return Response.ok(service.getLocation(id)).build();
+  }
+
   @POST
   public Response save(@Valid DroneDto droneDto) {
     return Response.status(Response.Status.CREATED).entity(service.save(droneDto)).build();

@@ -10,6 +10,7 @@ import org.futuereh.entity.DeliveryEntity;
 import org.futuereh.entity.DroneEntity;
 import org.futuereh.repository.DeliveryRepository;
 import org.futuereh.repository.DroneRepository;
+import org.futuereh.result.LocationResult;
 
 @ApplicationScoped
 public class DroneService {
@@ -159,5 +160,16 @@ public class DroneService {
   @Transactional
   public void delete(Long id) {
     repository.deleteById(id);
+  }
+
+  /**
+   * Method to get drone location.
+   * @param id Long
+   * @return LocationResult
+   */
+  public LocationResult getLocation(Long id) {
+    DroneEntity drone = repository.findById(id);
+
+    return new LocationResult(drone.getLatitude(), drone.getLongitude());
   }
 }

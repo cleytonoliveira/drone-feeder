@@ -1,0 +1,281 @@
+---
+openapi: 3.0.3
+info:
+  title: drone-feeder API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /delivery:
+    get:
+      tags:
+      - Delivery Controller
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Delivery Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryDto'
+      responses:
+        "200":
+          description: OK
+  /delivery/{id}:
+    get:
+      tags:
+      - Delivery Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Delivery Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryDto'
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Delivery Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "204":
+          description: No Content
+  /drone:
+    get:
+      tags:
+      - Drone Controller
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Drone Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DroneDto'
+      responses:
+        "200":
+          description: OK
+  /drone/{id}:
+    get:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DroneDto'
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "204":
+          description: No Content
+  /drone/{id}/deactivate:
+    patch:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /drone/{id}/delivery/{deliveryId}:
+    patch:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: deliveryId
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DroneDto'
+      responses:
+        "200":
+          description: OK
+  /drone/{id}/map:
+    get:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /drone/{id}/map/{deliveryId}:
+    patch:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: deliveryId
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DroneDto'
+      responses:
+        "200":
+          description: OK
+  /drone/{id}/withdrawal/{deliveryId}:
+    patch:
+      tags:
+      - Drone Controller
+      parameters:
+      - name: deliveryId
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DroneDto'
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    DeliveryDto:
+      type: object
+      properties:
+        withdrawalDate:
+          format: date-time
+          type: string
+        deliveryDate:
+          format: date-time
+          type: string
+        status:
+          type: boolean
+    DeliveryEntity:
+      type: object
+      properties:
+        deliveryId:
+          format: int64
+          type: integer
+        withdrawalDate:
+          format: date-time
+          type: string
+        deliveryDate:
+          format: date-time
+          type: string
+        status:
+          type: boolean
+    DroneDto:
+      type: object
+      properties:
+        alias:
+          type: string
+        brandName:
+          type: string
+        model:
+          type: string
+        latitude:
+          format: float
+          type: number
+        longitude:
+          format: float
+          type: number
+        active:
+          type: boolean
+        delivery:
+          $ref: '#/components/schemas/DeliveryEntity'

@@ -50,7 +50,7 @@ public class DroneTest {
     given().body(droneDto1).contentType(ContentType.JSON).post("/drone");
     given().body(droneDto2).contentType(ContentType.JSON).post("/drone");
 
-    given().when().get("/drone").then().statusCode(200).body("list.size()", is(5));
+    given().when().get("/drone").then().statusCode(200).body("list.size()", is(6));
   }
 
   @Test
@@ -103,5 +103,21 @@ public class DroneTest {
 
     given().delete("/drone/1");
     given().when().get("/drone").then().statusCode(200).body("list.size()", is(0));
+  }
+
+  @Test
+  @DisplayName("6 - Get drone location")
+  public void getDroneLocation() {
+    DroneDto droneDto = new DroneDto();
+    droneDto.setAlias("Perseus Red");
+    droneDto.setBrandName("Xiaomi");
+    droneDto.setModel("A940");
+    droneDto.setDelivery(null);
+    droneDto.setLatitude(23.5558f);
+    droneDto.setLongitude(46.6396f);
+    droneDto.setActive(false);
+
+    given().body(droneDto).contentType(ContentType.JSON).post("/drone").then().statusCode(201);
+    given().when().get("/drone/3/map").then().statusCode(200).body("latitude", is(23.5558f));
   }
 }

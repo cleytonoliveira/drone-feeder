@@ -6,7 +6,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Quarkus-2.10+-4695EB?style=for-the-badge&logo=quarkus" alt="quarkus version" />
-  <img src="https://img.shields.io/badge/JUnit_Cover-64.9%25-success?style=for-the-badge&logo=none" alt="JUnit cover" />
+  <img src="https://img.shields.io/badge/JUnit_Cover-57.3%25-success?style=for-the-badge&logo=none" alt="JUnit cover" />
 </p>
 <!-- What is? -->
 

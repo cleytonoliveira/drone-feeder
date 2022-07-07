@@ -1,11 +1,14 @@
 package org.futuereh.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import org.futuereh.dto.DroneDto;
+import org.futuereh.entity.DeliveryEntity;
 import org.futuereh.entity.DroneEntity;
+import org.futuereh.repository.DeliveryRepository;
 import org.futuereh.repository.DroneRepository;
 
 @ApplicationScoped
@@ -16,6 +19,9 @@ public class DroneService {
    */
   @Inject
   private DroneRepository repository;
+
+  @Inject
+  private DeliveryRepository deliveryRepository;
 
   /**
    * Method to list all drones.
@@ -57,7 +63,7 @@ public class DroneService {
    * Method to update all information about drone.
    * @param droneDto DroneDto
    * @param id Long
-   * @return
+   * @return DroneEntity
    */
   @Transactional
   public DroneEntity update(DroneDto droneDto, Long id) {
@@ -69,6 +75,79 @@ public class DroneService {
     drone.setLongitude(droneDto.getLongitude());
     drone.setModel(droneDto.getModel());
     drone.setActive(droneDto.getActive());
+    repository.persist(drone);
+    return drone;
+  }
+
+  /**
+   * Method to withdrawal drone.
+   * @param droneDto DroneDto
+   * @param id Long
+   * @return DroneEntity
+   */
+  @Transactional
+  public DroneEntity withdrawal(DroneDto droneDto, Long id, Long deliveryId) {
+    DeliveryEntity delivery = deliveryRepository.findById(deliveryId);
+    delivery.setWithdrawalDate(LocalDateTime.now());
+    delivery.setStatus(true);
+
+    DroneEntity drone = repository.findById(id);
+    drone.setDelivery(delivery);
+    drone.setLatitude(droneDto.getLatitude());
+    drone.setLongitude(droneDto.getLongitude());
+    drone.setActive(true);
+    repository.persist(drone);
+    return drone;
+  }
+
+  /**
+   * Method to delivery drone.
+   * @param droneDto DroneDto
+   * @param id Long
+   * @return DroneEntity
+   */
+  @Transactional
+  public DroneEntity delivery(DroneDto droneDto, Long id, Long deliveryId) {
+    DeliveryEntity delivery = deliveryRepository.findById(deliveryId);
+    delivery.setDeliveryDate(LocalDateTime.now());
+    delivery.setStatus(false);
+
+    DroneEntity drone = repository.findById(id);
+    drone.setDelivery(delivery);
+    drone.setLatitude(droneDto.getLatitude());
+    drone.setLongitude(droneDto.getLongitude());
+    repository.persist(drone);
+    return drone;
+  }
+
+  /**
+   * Method to maps drone.
+   * @param droneDto DroneDto
+   * @param id Long
+   * @return DroneEntity
+   */
+  @Transactional
+  public DroneEntity maps(DroneDto droneDto, Long id, Long deliveryId) {
+    DeliveryEntity delivery = deliveryRepository.findById(deliveryId);
+
+    DroneEntity drone = repository.findById(id);
+    drone.setDelivery(delivery);
+    drone.setLatitude(droneDto.getLatitude());
+    drone.setLongitude(droneDto.getLongitude());
+    repository.persist(drone);
+    return drone;
+  }
+
+  /**
+   * Method to deactivate drone.
+   * @param id Long
+   * @return DroneEntity
+   */
+  @Transactional
+  public DroneEntity deactivate(Long id) {
+    DroneEntity drone = repository.findById(id);
+    drone.setDelivery(null);
+    drone.setActive(false);
     repository.persist(drone);
     return drone;
   }
